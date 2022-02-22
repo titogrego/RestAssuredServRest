@@ -24,3 +24,10 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn test -DcustomerCode=DEV
+    # publicar relatorio em html
+    - name: Deploy to GithubPages
+      uses: JamesIves/github-pages-deploy-action@3.5.9
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: TestReport 
