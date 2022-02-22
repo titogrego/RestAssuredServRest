@@ -30,14 +30,27 @@ public class BaseTest{
     public PrintStream requestCapture;
     public StringWriter responseWriter;
     public PrintStream responseCapture;
-    String baseUrl = "http://localhost:3000/";
+    String baseUrlLocal = "http://localhost:3000/";
+    String getBaseUrlDev = "https://serverest.dev/";
     ContentType APP_CONTENT_TYPE = ContentType.JSON;
     public String TOKEN;
 
     @BeforeTest
     public void setUp() {
+
+            String ambiente = System.getProperty("customerCode");
+        if (ambiente == null) {
+
+            RestAssured.baseURI = baseUrlLocal;
+        } else {
+            if (ambiente.equals("LOCAL")) {
+                RestAssured.baseURI = baseUrlLocal;
+            }
+            if (ambiente.equals("DEV")) {
+                RestAssured.baseURI = getBaseUrlDev;
+            }
+        }
             LoginRequest loginRequest = new LoginRequest();
-            RestAssured.baseURI = baseUrl;
             RequestSpecBuilder reqBuilder = new RequestSpecBuilder();
             reqBuilder.setContentType(APP_CONTENT_TYPE);
             RestAssured.requestSpecification = reqBuilder.build();
