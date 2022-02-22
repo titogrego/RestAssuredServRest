@@ -2,6 +2,7 @@ package Helpers;
 
 
 import DTO.LoginDTO;
+import DTO.UsuarioDTO;
 import Requests.LoginRequest;
 import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
@@ -38,7 +39,9 @@ public class BaseTest{
     @BeforeTest
     public void setUp() {
 
-            String ambiente = System.getProperty("customerCode");
+        String ambiente = System.getProperty("customerCode");
+       
+        System.out.println(ambiente);
         if (ambiente == null) {
 
             RestAssured.baseURI = baseUrlLocal;

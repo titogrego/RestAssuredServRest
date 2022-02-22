@@ -13,10 +13,10 @@ public class ExtentManager {
         String customerCode= System.getProperty("customerCode");
 
         if(customerCode==null){
-           customerCode = "Desenvolvimento";
+           customerCode = "Local";
         }else{
-            if (customerCode.equals("HML")) {
-                customerCode = "Homologação";
+            if (customerCode.equals("LOCAL")) {
+                customerCode = "Local";
             }
             if (customerCode.equals("DEV")) {
                 customerCode = "Desenvolvimento";
@@ -26,7 +26,7 @@ public class ExtentManager {
 
 
 
-        String pathFile =  System.getProperty("user.dir")+ File.separator +"TestReport"+ File.separator +"relatorioTest.html";
+        String pathFile =  System.getProperty("user.dir")+ File.separator +"TestReport"+ File.separator +"index.html";
         ExtentSparkReporter reporter = new ExtentSparkReporter(pathFile);
         String css ="#img {\n" +
                 "    width: 120px;\n" +
