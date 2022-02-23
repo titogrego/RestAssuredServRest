@@ -40,10 +40,7 @@ public class BaseTest{
     public void setUp() {
 
         String ambiente = System.getProperty("customerCode");
-       
-        System.out.println(ambiente);
         if (ambiente == null) {
-
             RestAssured.baseURI = baseUrlLocal;
         } else {
             if (ambiente.equals("LOCAL")) {
@@ -61,8 +58,7 @@ public class BaseTest{
             RestAssured.responseSpecification = resBuilder.build();
             LoginDTO login = LoginDTO.builder().email("fulano@qa.com").password("teste").build();
             Response loginResponse = loginRequest.PostLogin(login);
-            TOKEN = loginResponse.then().extract().path("authorization");
-
+            TOKEN = loginResponse.then().log().all().extract().path("authorization");
     }
 
     @BeforeMethod
@@ -75,8 +71,6 @@ public class BaseTest{
         reqBuilder.addFilter((new RequestLoggingFilter(requestCapture)));
         reqBuilder.addFilter((new ResponseLoggingFilter(responseCapture)));
         RestAssured.requestSpecification = reqBuilder.build();
-
-
     }
 
     @AfterMethod

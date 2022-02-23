@@ -26,7 +26,7 @@ public class ExtentManager {
 
 
 
-        String pathFile =  System.getProperty("user.dir")+ File.separator +"TestReport"+ File.separator +"index.html";
+        String pathFile =  System.getProperty("user.dir")+ File.separator +"TestReport"+ File.separator +"relatorioTestes.html";
         ExtentSparkReporter reporter = new ExtentSparkReporter(pathFile);
         String css ="#img {\n" +
                 "    width: 120px;\n" +

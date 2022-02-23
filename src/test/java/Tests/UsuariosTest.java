@@ -74,14 +74,13 @@ public class UsuariosTest extends BaseTest {
 
         Response response = request.POSTUsuarios(usuarioDTO);
         String id_usuario= response.then().log().all()
-                .statusCode(200)
+                .statusCode(201)
                 .body("message",is("Cadastro realizado com sucesso"))
                 .body("_id",is(notNullValue()))
                .extract().path("_id")
         ;
-        System.out.println("TESTE "+id_usuario);
         pathUsuario.put("_id", id_usuario);
-        System.out.println("MAP: " + pathUsuario.get("_id"));
+
     }
 
     @Test(priority = 1, description = "Validar o retorno da API",dependsOnMethods = {"DevoAdicionarUmNovoUsuario"})

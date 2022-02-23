@@ -7,9 +7,10 @@
 
     <test name="TestServRest">
         <classes>
+            <class name="Tests.CarrinhosTest"></class>
             <class name="Tests.LoginTest"/>
             <class name="Tests.UsuariosTest"/>
-            <class name="Tests.CarrinhosTest"></class>
+
         </classes>
     </test>
 
